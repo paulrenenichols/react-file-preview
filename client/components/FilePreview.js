@@ -43,10 +43,15 @@ class FilePreview extends Component {
   render() {
     return (
       <div className={`file-preview ${this.props.showPreview ? 'full-screen' : ''}`}>
-        <h1>{this.props.contentType}</h1>
-        <div>
-          <a href={this.props.url} download>{this.props.name}</a>
-          <span>{this.generateSizeString(this.props.size)}</span>
+        <span className={'file-icon fa fa-file-image-o fa-3x'} />
+        <span className={'file-details'}>
+          <h1>{this.props.contentType}</h1>
+          <div>
+            <a href={this.props.url} download>{this.props.name}</a>
+            <span>{this.generateSizeString(this.props.size)}</span>
+          </div>
+        </span>
+        <div className={'hover-overlay'}>
         </div>
       </div>
     );
