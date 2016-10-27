@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      files: {}
+      files: []
     };
   }
 
@@ -28,7 +28,9 @@ class App extends Component {
   render() {
     return (
       <div className={'appContainer'}>
-        {JSON.stringify(this.state.files, null, 2)}
+        {this.state.files.map(function (fileInfo) {
+          return <a key={fileInfo.url} href={fileInfo.url} download>{fileInfo.url}</a>;
+        })}
       </div>
     );
   }
