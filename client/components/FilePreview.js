@@ -45,7 +45,7 @@ class FilePreview extends Component {
       <div className={`file-preview ${this.props.showPreview ? 'full-screen' : ''}`}>
         <h1>{this.props.contentType}</h1>
         <div>
-          <a href={this.props.url} download>{this.props.url}</a>
+          <a href={this.props.url} download>{this.props.name}</a>
           <span>{this.generateSizeString(this.props.size)}</span>
         </div>
       </div>

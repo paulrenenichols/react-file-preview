@@ -4,7 +4,32 @@ html,body,#appBootElement,.appContainer {
   margin:0;
 }
 
+h1 {
+  margin: 0;
+}
+
 .file-preview {
   font-size: 16px;
-  
+  border: 1px solid black;
+  margin: 1%;
+  padding: 1%;
+  width: 30%;
+
+  & > h1 {
+    font-size: 1em;
+    margin-bottom: 2%;
+  }
+
+  & > div {
+    & > a {
+      display: inline-block;
+      padding-right: 3%;
+      border-right: 2px solid black;
+    }
+
+    & > span {
+      display: inline-block;
+      padding-left: 3%;
+    }
+  }
 }
