@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <div className={'appContainer'}>
         {this.state.files.map(function (fileInfo) {
-          return <FilePreview {...fileInfo} />;
+          return <FilePreview {...fileInfo} key={fileInfo.url} />;
         })}
       </div>
     );

@@ -6,6 +6,7 @@ import App                                      from './containers/App';
 // Boot up the application
 //
 // Nothing here yet
+import './styles/main.less';
 
 render(
   <App/>

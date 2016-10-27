@@ -25,14 +25,15 @@ class FilePreview extends Component {
   }
 
   generateSizeString(size) {
-    if (size > (1024 ^ 3)) {
-      return `${Math.ceil(size / (1024 ^ 3))}GB`;
+    console.log(size);
+    if (size > (1024 * 1024 * 1024)) {
+      return `${Math.ceil(size / (1024 * 1024 * 1024))}GB`;
     }
-    else if (Math.ceil(size > (1024 ^ 2))) {
-      return `${size / (1024 ^ 2)}MB`;
+    else if (Math.ceil(size > (1024 * 1024))) {
+      return `${Math.ceil(size / (1024 * 1024))}MB`;
     }
     else if (Math.ceil(size > 1024)) {
-      return `${size / 1024}KB`;
+      return `${Math.ceil(size / 1024)}KB`;
     }
     else {
       return `${size}Bytes`;
@@ -44,7 +45,7 @@ class FilePreview extends Component {
       <div className={`file-preview ${this.props.showPreview ? 'full-screen' : ''}`}>
         <h1>{this.props.contentType}</h1>
         <div>
-          <a key={this.props.url} href={this.props.url} download>{this.props.url}</a>
+          <a href={this.props.url} download>{this.props.url}</a>
           <span>{this.generateSizeString(this.props.size)}</span>
         </div>
       </div>
