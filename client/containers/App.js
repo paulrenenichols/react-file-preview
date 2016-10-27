@@ -6,11 +6,14 @@ import FilePreview            from '../components/FilePreview';
 
 class App extends Component {
 
+  state = {
+    files: [],
+    showPreview: false,
+    previewUrl: ''
+  }
+
   constructor() {
     super();
-    this.state = {
-      files: []
-    };
   }
 
   componentDidMount() {
@@ -27,12 +30,36 @@ class App extends Component {
       });
   }
 
+  previewStyles() {
+    return {
+      background: `url("${this.state.previewUrl}") no-repeat center/70%`
+    };
+  }
+
+  showPreview = (previewUrl) => {
+    this.setState({
+      previewUrl,
+      showPreview: true
+    });
+  }
+
+  hidePreview = () => {
+    this.setState({
+      previewUrl: '',
+      showPreview: false
+    });
+  }
+
   render() {
+    const showPreview = this.showPreview;
     return (
       <div className={'appContainer'}>
         {this.state.files.map(function (fileInfo) {
-          return <FilePreview {...fileInfo} key={fileInfo.url} />;
+          return <FilePreview {...fileInfo} key={fileInfo.url} showPreview={showPreview} />;
         })}
+        <div id={'preview'} style={this.previewStyles()} className={`${this.state.showPreview ? 'preview-active' : ''}`}>
+          <div onClick={this.hidePreview}>X</div>
+        </div>
       </div>
     );
   }

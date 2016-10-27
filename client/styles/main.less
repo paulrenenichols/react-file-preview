@@ -8,6 +8,41 @@ h1 {
   margin: 0;
 }
 
+#appBootElement {
+  position: relative;
+}
+
+#preview {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  height: 90vh;
+  width: 90vw;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+
+  & > div {
+    position: absolute;
+    font-family: sans-serif;
+    right: 3%;
+    top: 3%;
+    font-size: 3em;
+    cursor: pointer;
+    padding: 3%;
+
+    &:hover {
+      background: rgba(200, 200, 200, 0.5);
+    }
+  }
+
+  &.preview-active {
+    display: block;
+  }
+}
+
 .file-preview {
   position: relative;
   font-size: 16px;
@@ -47,6 +82,7 @@ h1 {
       bottom: 0;
       right: 18%;
       display: block;
+      cursor: pointer;
     }
   }
 

@@ -9,7 +9,7 @@ class FilePreview extends Component {
     url:          PropTypes.string,
     name:         PropTypes.string,
     size:         PropTypes.number,
-    showPreview:  PropTypes.bool,
+    showPreview:  PropTypes.func
   };
 
   static defaultProps = {
@@ -17,7 +17,7 @@ class FilePreview extends Component {
     url:          '',
     name:         '',
     size:         0,
-    showPreview:  false
+    showPreview:  () => {}
   };
 
   constructor() {
@@ -25,7 +25,6 @@ class FilePreview extends Component {
   }
 
   generateSizeString(size) {
-    console.log(size);
     if (size > (1024 * 1024 * 1024)) {
       return `${Math.ceil(size / (1024 * 1024 * 1024))}GB`;
     }
@@ -40,9 +39,13 @@ class FilePreview extends Component {
     }
   }
 
+  previewClick = () => {
+    this.props.showPreview(this.props.url);
+  }
+
   render() {
     return (
-      <div className={`file-preview ${this.props.showPreview ? 'full-screen' : ''}`}>
+      <div className={'file-preview'}>
         <span className={'file-icon fa fa-file-image-o fa-3x'} />
         <span className={'file-details'}>
           <h1>{this.props.contentType}</h1>
@@ -52,7 +55,7 @@ class FilePreview extends Component {
           </div>
         </span>
         <div className={'hover-overlay'}>
-          <span className={'file-icon fa fa-eye fa-2x'} />
+          <span className={'file-icon fa fa-eye fa-2x'} onClick={this.previewClick} />
           <a href={this.props.url} download className={'file-icon fa fa-download fa-2x'} />
         </div>
       </div>
