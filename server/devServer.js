@@ -4,11 +4,14 @@ var webpack         = require('webpack');
 var webpackConfig   = require('../webpack.config.dev');
 
 var portNumber      = require('./common/portNumber');
+var api             = require('./common/api');
 
 //Create Server
 var app = express();
 
 app.use(express.static(path.resolve(__dirname, '../staticFiles')));
+
+app.use('/api', api);
 
 var compiler = webpack(webpackConfig);
 app.use(require('webpack-dev-middleware')(compiler, {

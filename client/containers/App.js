@@ -1,32 +1,34 @@
 // core modules
-import React, { Component }                         from 'react';
-import { connect }                                  from 'react-redux';
-
-import selectors                                    from '../selectors/index';
-
-import events                                       from '../events/index';
-
-import Actions                                      from '../actions/index';
-
-
-function mapStateToProps(state) {
-  return {
-
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-
-  };
-}
+import React, { Component }   from 'react';
+import fetch                  from 'isomorphic-fetch';
 
 class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      files: {}
+    };
+  }
+
+  componentDidMount() {
+    var boundSetState = (obj) => { this.setState(obj); };
+    fetch('/api/files')
+      .then(function(response) {
+        if (response.status >= 400) {
+          throw new Error('Bad response from server');
+        }
+        return response.json();
+      })
+      .then(function(files) {
+        boundSetState({ files });
+      });
+  }
 
   render() {
     return (
       <div className={'appContainer'}>
-        Testing
+        {JSON.stringify(this.state.files, null, 2)}
       </div>
     );
   }
@@ -34,4 +36,4 @@ class App extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
