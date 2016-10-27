@@ -15,7 +15,8 @@ apiRouter.get('/files', function (req, res) {
     var fileInfo = {
       url: `/storage/${fileName}`,
       size: fileStats.size,
-      contentType: mime.lookup(fileName)
+      contentType: mime.lookup(fileName),
+      name: fileName
     };
     return fileInfo;
   });

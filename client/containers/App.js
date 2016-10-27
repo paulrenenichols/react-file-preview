@@ -2,6 +2,8 @@
 import React, { Component }   from 'react';
 import fetch                  from 'isomorphic-fetch';
 
+import FilePreview            from '../components/FilePreview';
+
 class App extends Component {
 
   constructor() {
@@ -29,7 +31,7 @@ class App extends Component {
     return (
       <div className={'appContainer'}>
         {this.state.files.map(function (fileInfo) {
-          return <a key={fileInfo.url} href={fileInfo.url} download>{fileInfo.url}</a>;
+          return <FilePreview {...fileInfo} />;
         })}
       </div>
     );
