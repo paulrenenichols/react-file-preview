@@ -52,6 +52,8 @@ class FilePreview extends Component {
           </div>
         </span>
         <div className={'hover-overlay'}>
+          <span className={'file-icon fa fa-eye fa-2x'} />
+          <a href={this.props.url} download className={'file-icon fa fa-download fa-2x'} />
         </div>
       </div>
     );

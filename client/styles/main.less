@@ -25,6 +25,29 @@ h1 {
     display: none;
     width: 100%;
     height: 100%;
+
+    & > a {
+      position: absolute;
+      margin: auto;
+      top: 30%;
+      bottom: 0;
+      right: 3%;
+      display: block;
+
+      &:visited, &:active, &:link, &:focus {
+        color: inherit;
+      }
+    }
+
+    & > span {
+      display: block;
+      position: absolute;
+      margin: auto;
+      top: 30%;
+      bottom: 0;
+      right: 18%;
+      display: block;
+    }
   }
 
   &:hover {
